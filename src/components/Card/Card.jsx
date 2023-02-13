@@ -41,7 +41,7 @@ const vendors = {
 
 
 
-function Card({cardNumber, cardHolder, validThru, vendor}) {
+function Card({cardNumber, cardHolder, validThru, vendor, clickHandler}) {
     let group = [
         'XXXX',
         'XXXX',
@@ -61,10 +61,10 @@ function Card({cardNumber, cardHolder, validThru, vendor}) {
 
 
     return (
-        <article className='card' style={{background: `${vendors[vendor].background}`, color: `${vendors[vendor].mainTextColor}`}}>
+        <article number={ cardNumber } onClick={ clickHandler } className='card' style={{background: `${vendors[vendor].background}`, color: `${vendors[vendor].mainTextColor}`}}>
             <section className='card__inner-container'>
-                <img id='card__chip' src={ vendors[vendor].chip } alt="chip" />
-                <img id='card__vendor' src={ vendors[vendor].logo } alt="vendor" />
+                <img className='card__chip' src={ vendors[vendor].chip } alt="chip" />
+                <img className='card__vendor' src={ vendors[vendor].logo } alt="vendor" />
                 <section className='full-card-number'>
                     <p className='card-nr card-nr--1'>{ group[0] }</p>
                     <p className='card-nr card-nr--2'>{ group[1] }</p>

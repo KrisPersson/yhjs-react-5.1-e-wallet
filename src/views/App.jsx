@@ -46,6 +46,14 @@ function App() {
     navigate('/addcard')
   }
 
+  function handleSetActiveCard(event) {
+    const number = event.currentTarget.getAttribute('number')
+    const selectedCard = savedCards.filter(card => card.cardNumber === number)[0]
+    setActiveCard(selectedCard)
+    console.log(selectedCard)
+  }
+
+
   return (
     <section className="view view--app">
       <Header headerText={ 'E-WALLET' } />
@@ -57,7 +65,7 @@ function App() {
         vendor={activeCard.vendor}
 
       />
-      <section className='saved-cards-container' style={{height: `${15.0625 + (3.0625 * (savedCards.length - 1))}rem`}}>
+      <section className='saved-cards-container' style={{height: `${15.0625 + (3.0625 * (savedCards.length - 2))}rem`}}>
         {
           savedCards.length === 0 ? <h2>No Saved Cards</h2> :
           savedCards.length === 1 ? <Link to='/addcard'><h2>Add a Second Card</h2></Link> :
@@ -70,6 +78,7 @@ function App() {
                   cardNumber={card.cardNumber}
                   vendor={card.vendor}
                   key={i}
+                  clickHandler={handleSetActiveCard}
                 />)
             }
             

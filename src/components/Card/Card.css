@@ -8,7 +8,13 @@
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
     /* padding: 1rem; */
     margin: 0 auto;
-    
+}
+
+.saved-cards-container .card:hover {
+    cursor: pointer;
+    z-index: 2;
+    transform: translateY(5px);
+    transition: 500ms;
 }
 
 .card__inner-container {
@@ -21,15 +27,13 @@
     background: linear-gradient(45deg, rgb(255 255 255 / 0), rgb(255 255 255 / 0.24));
 }
 
-#card__chip {
-    grid-row: 3 / 4;
+.card__chip {
+    grid-row: 2 / 4;
     grid-column: 2 / 3;
-    align-self: center;
-    /* max-height: 2.5rem; */
-    transform: translateY(-1.3rem);
+    align-self: top;
 }
 
-#card__vendor {
+.card__vendor {
     grid-row: 2 / 3;
     grid-column: 5 / 6;
     justify-self: center;
@@ -57,6 +61,7 @@
     font-size: 0.75rem;
     grid-row: 5 / span 1;
     margin: 0;
+    align-self: bottom;
 }
 
 .card__cardholder-name {

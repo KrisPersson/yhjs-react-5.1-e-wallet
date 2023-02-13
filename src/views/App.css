@@ -2,7 +2,7 @@
   width: 23.875rem;
   /* height: fit-content; */
   height: 15.0625rem;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
   border-radius: 8px;
   margin: auto;
   margin-top: 2.5rem;
@@ -13,8 +13,6 @@
 
 }
 
-.saved-cards-container .card {
-  
-}
+
 
 
