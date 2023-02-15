@@ -36,6 +36,13 @@ const vendors = {
         chip: LightChipLogo,
         mainTextColor: 'rgb(255 255 255)',
         secondaryTextColor: 'rgb(255 255 255)'
+    },
+    empty: {
+        logo: BitcoinLogo,
+        background: 'rgb(208 208 208)',
+        chip: DarkChipLogo,
+        mainTextColor: 'rgb(0 0 0)',
+        secondaryTextColor: 'rgb(0 0 0 / 0.8)'
     }
 }
 
@@ -74,7 +81,7 @@ function Card({cardNumber, cardHolder, validThru, vendor, clickHandler}) {
                 <h4 className='card__cardholder-name' style={{color: vendors[vendor].secondaryTextColor}}>CARDHOLDER NAME</h4>
                 <h4 className='card__valid-thru'>VALID THRU</h4>
                 <p className='card__cardholder-name '>{ cardHolder }</p>
-                <p className='card__valid-thru'>{ validThru }</p>
+                <p className='card__valid-thru'>{ `${validThru[0]}${validThru[1]}/${validThru[2]}${validThru[3]} `}</p>
 
 
             </section>

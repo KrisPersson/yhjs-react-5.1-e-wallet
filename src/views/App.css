@@ -2,6 +2,7 @@
   width: 23.875rem;
   /* height: fit-content; */
   height: 15.0625rem;
+  min-height: 15.0625rem;
   /* border: 1px solid #000; */
   border-radius: 8px;
   margin: auto;
@@ -13,6 +14,42 @@
 
 }
 
+.phantom-card {
+    font-family: 'PT Mono';
+    width: 23.875rem;
+    /* min-width: 100%; */
+    max-width: 23.875rem;
+    height: 15.0625rem;
+    border-radius: 8px;
+    /* box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.25); */
+    background: #e6e6e6;
+    /* padding: 1rem; */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.phantom-card a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  width: 23.875rem;
+  /* height: 100%; */
+
+}
+
+.phantom-card h3 {
+  font-size: 1.1rem !important;
+  line-height: 1.7rem;
+  max-width: 80%;
+  
+}
+
+.phantom-card h2 {
+  /* font-weight: 400; */
+  font-size: 1.1rem !important;
+  line-height: 1.7rem;
+}
 
 
 

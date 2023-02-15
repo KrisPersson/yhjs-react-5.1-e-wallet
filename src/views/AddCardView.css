@@ -1,0 +1,48 @@
+form {
+    font-family: 'PT Mono';
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    height: 27.8125rem; 
+    position: absolute;
+    bottom: 1rem;
+    width: 23.875rem;
+
+}
+
+form label {
+    display: flex;
+    flex-flow: column nowrap;;
+    text-align: left;
+    font-size: 0.75rem;
+}
+
+form input, form select {
+    height: 3.5rem;
+    border-radius: 8px;
+    border: 1px solid black;
+    outline: none;
+    padding-left: 0.5rem;
+    font-size: 1.125rem;
+    letter-spacing: 3%;;
+    font-family: 'PT Mono';
+    margin-top: 0.3rem;
+}
+
+.form__short-inputs-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form__short-inputs-container input {
+    width: 10.9375rem;
+    
+}
+
+
+form button {
+    height: 4.5rem;
+    color: #fff;
+    background: #000;
+    /* margin-top: 2.25rem; */
+}
