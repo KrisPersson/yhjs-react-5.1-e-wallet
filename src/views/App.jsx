@@ -1,13 +1,14 @@
-import { useState } from 'react'
-import { useNavigate, Link, useLocation } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
 import './App.css'
 
 import Header from '../components/Header/Header'
 import Card from '../components/Card/Card'
 
 function App() {
+  const navigate = useNavigate()
 
-
+  const [savedCards, setSavedCards] = useState([])
   const [activeCard, setActiveCard] = useState(
     {
       cardHolder: '',
@@ -16,63 +17,39 @@ function App() {
       vendor: ''
     }
   )
-  const [savedCards, setSavedCards] = useState([
-    // {
-    //   cardHolder: 'KRISTOFER PERSSON',
-    //   validThru: '12/23',
-    //   cardNumber: '1234567890123456',
-    //   vendor: 'bitcoin'
-    // }
-    // {
-    //   cardHolder: 'KRISTOFER PERSSON',
-    //   validThru: '1223',
-    //   cardNumber: '1234561736408456',
-    //   vendor: 'ninja'
-    // },
-    // {
-    //   cardHolder: 'KRISTOFER PERSSON',
-    //   validThru: '1223',
-    //   cardNumber: '1234567890120089',
-    //   vendor: 'blockchain'
-    // },
-    // {
-    //   cardHolder: 'KRISTOFER PERSSON',
-    //   validThru: '1223',
-    //   cardNumber: '1234567890121233',
-    //   vendor: 'evil'
-    // }
-  ])
-  const [lastKey, setLastKey] = useState('')
 
-  const location = useLocation()
-  console.log(location)
-  if (location.key !== lastKey && location.state != null) {
-
-    const newCard = {
-      cardHolder: location.state.cardHolder,
-      validThru: location.state.validThru,
-      cardNumber: location.state.cardNumber,
-      vendor: location.state.vendor
+  useEffect(() => {
+    if (localStorage.getItem('savedCards')) {
+      setSavedCards(JSON.parse(localStorage.getItem('savedCards')))
     }
+  }, [])
 
-    setLastKey(location.key)
-    setSavedCards(currentCards => {
-      return [...currentCards, newCard]
-    })
-  }
-  
-
-  const navigate = useNavigate()
 
   function handleClick() {
     navigate('/addcard')
   }
 
+  function deleteHandle(event) {
+    const currentCard = event.currentTarget.parentNode.getAttribute('number')
+    console.log(currentCard)
+    
+    const updatedCards = savedCards.filter(card => card.cardNumber !== currentCard)
+
+    localStorage.setItem('savedCards', JSON.stringify(updatedCards))
+    setActiveCard({
+      cardHolder: '',
+      validThru: '',
+      cardNumber: '',
+      vendor: ''
+    })
+    setSavedCards(updatedCards)
+}
+
   function handleSetActiveCard(event) {
     const number = event.currentTarget.getAttribute('number')
     const selectedCard = savedCards.filter(card => card.cardNumber === number)[0]
     setActiveCard(selectedCard)
-    console.log(selectedCard)
+    // console.log(selectedCard)
   }
 
 
@@ -86,6 +63,8 @@ function App() {
           validThru={activeCard.validThru} 
           cardNumber={activeCard.cardNumber}
           vendor={activeCard.vendor}
+          deleteHandle={ deleteHandle }
+          active={true}
         />
       : <article className='phantom-card'>
           <h3>{ savedCards.length < 1 ? <Link to='/addcard'>Add your first card!</Link> 
@@ -94,7 +73,7 @@ function App() {
           </h3>
         </article>
       }
-      <section className='saved-cards-container' style={{height: `${15.0625 + (3.0625 * (savedCards.length - 2))}rem`}}>
+      <section className='saved-cards-container' style={{height: `${15.0625 + (3.0625 * (savedCards.length - 1))}rem`}}>
         {
           savedCards.length === 0 ? <article className='phantom-card'><h2>No Saved Cards</h2></article> :
           savedCards.length === 1 && activeCard.cardNumber ? <article className='phantom-card'><Link to='/addcard'><h2>Add a Second Card</h2></Link></article> :
@@ -108,6 +87,7 @@ function App() {
                   vendor={card.vendor}
                   key={i}
                   clickHandler={handleSetActiveCard}
+                  active={false}
                 />)
             }
             

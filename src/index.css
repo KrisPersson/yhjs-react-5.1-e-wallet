@@ -22,6 +22,8 @@ body {
 .view h3 {
   font-size: 0.75rem;
   color: rgba(34, 34, 34, 0.6);
+  font-family: 'Source Sans Pro';
+
 }
 
 button {
@@ -42,9 +44,50 @@ button {
   bottom: 1rem;
   left: 1rem; */
   margin-top: 2.5rem;
+  margin-bottom: 1rem;
 
 }
 
 button:hover {
   cursor: pointer;
 }
+
+.delete-card-btn {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.3rem;
+  opacity: 0;
+  transition: 300ms;
+  z-index: 3;
+}
+
+.delete-card-btn:hover {
+  opacity: 1;
+}
+
+.delete-card-btn:active {
+  opacity: 1;
+}
+
+.card:hover .delete-card-btn {
+  opacity: 0.3;
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+

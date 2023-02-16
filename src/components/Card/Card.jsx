@@ -48,7 +48,8 @@ const vendors = {
 
 
 
-function Card({cardNumber, cardHolder, validThru, vendor, clickHandler}) {
+
+function Card({cardNumber, cardHolder, validThru, vendor, clickHandler, deleteHandle, active}) {
     let group = [
         'XXXX',
         'XXXX',
@@ -85,6 +86,8 @@ function Card({cardNumber, cardHolder, validThru, vendor, clickHandler}) {
 
 
             </section>
+            {active && <i onClick={deleteHandle} className="fa-regular fa-trash-can delete-card-btn"></i>}
+
         </article>
     )
 }

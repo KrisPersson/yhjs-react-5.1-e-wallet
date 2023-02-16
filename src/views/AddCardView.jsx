@@ -1,10 +1,14 @@
 import './AddCardView.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../components/Header/Header'
 import Card from '../components/Card/Card'
 
+import selectArrow from '../assets/select-arrow.png'
+
 function AddCardView() {
+
+
 
     const [cardNumber, setCardNumber] = useState('XXXXXXXXXXXXXXXX')
     const [cardHolder, setCardHolder] = useState('FIRSTNAME LASTNAME')
@@ -72,16 +76,24 @@ function AddCardView() {
         const currentYear = new Date().toString().split(' ')[3].slice(2, 4)
 
         if (cardNumber.length === 16
-            && cardNumber.split('').filter(letter => letter !== 'X').length === 16
-            // && cardHolder.length > 3
-            // && Number(validThru[0]) < 2
-            // && Number(validThru[1]) < 3
-            // && Number(validThru.slice(2, 4)) >= Number(currentYear)
+            && cardHolder.length > 3
+            && Number(validThru[0]) < 2
+            && Number(validThru[1]) < 3
+            && Number(validThru.slice(2, 4)) >= Number(currentYear)
 
             
             ) {
+                
+                if (localStorage.getItem('savedCards')) {
+                    const cards = JSON.parse(localStorage.getItem('savedCards')) 
+                    cards.push(newCard)
+                    localStorage.setItem('savedCards', JSON.stringify(cards))
+                } else {
+                    localStorage.setItem('savedCards', JSON.stringify([newCard]))
+                }
+                
                 console.log('Success!')
-                navigate('/', {state: newCard})
+                navigate('/')
             }
 
         
@@ -100,7 +112,7 @@ function AddCardView() {
             <form onSubmit={ submitHandler }>
                 <label>
                     CARD NUMBER 
-                    <input onChange={ handleCardNumber } type="number" />
+                    <input required maxLength={16} onChange={ handleCardNumber } type="text" />
                 </label>
                 <label>
                     CARDHOLDER NAME
@@ -118,6 +130,7 @@ function AddCardView() {
                 </section>
                 <label>
                     VENDOR
+                    <img className='form__select-arrow' src={ selectArrow } alt="" />
                     <select onChange={ handleVendor } name="vendor" id="vendor-input" defaultValue={'empty'}>
                         <option value="empty">-none selected-</option>
                         <option value="bitcoin">Bitcoin</option>

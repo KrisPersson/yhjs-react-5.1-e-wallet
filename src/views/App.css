@@ -15,7 +15,6 @@
 }
 
 .phantom-card {
-    font-family: 'PT Mono';
     width: 23.875rem;
     /* min-width: 100%; */
     max-width: 23.875rem;
@@ -42,6 +41,8 @@
   font-size: 1.1rem !important;
   line-height: 1.7rem;
   max-width: 80%;
+  font-family: 'PT Mono' !important;
+
   
 }
 
@@ -49,6 +50,7 @@
   /* font-weight: 400; */
   font-size: 1.1rem !important;
   line-height: 1.7rem;
+  font-family: 'PT Mono' !important;
 }
 
 
