@@ -92,7 +92,6 @@ function AddCardView() {
                     localStorage.setItem('savedCards', JSON.stringify([newCard]))
                 }
                 
-                console.log('Success!')
                 navigate('/')
             }
 
