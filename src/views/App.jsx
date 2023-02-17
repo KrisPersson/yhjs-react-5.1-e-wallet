@@ -31,7 +31,6 @@ function App() {
 
   function deleteHandle(event) {
     const currentCard = event.currentTarget.parentNode.getAttribute('number')
-    console.log(currentCard)
     
     const updatedCards = savedCards.filter(card => card.cardNumber !== currentCard)
 
@@ -49,7 +48,6 @@ function App() {
     const number = event.currentTarget.getAttribute('number')
     const selectedCard = savedCards.filter(card => card.cardNumber === number)[0]
     setActiveCard(selectedCard)
-    // console.log(selectedCard)
   }
 
 
