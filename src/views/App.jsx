@@ -8,6 +8,8 @@ import Card from '../components/Card/Card'
 function App() {
   const navigate = useNavigate()
 
+
+  const [privateMode, setPrivateMode] = useState(true)
   const [savedCards, setSavedCards] = useState([])
   const [activeCard, setActiveCard] = useState(
     {
@@ -50,10 +52,18 @@ function App() {
     setActiveCard(selectedCard)
   }
 
+  function flipPrivateMode() {
+    setPrivateMode((prev) => !prev)
+  }
+
 
   return (
     <section className="view view--app">
-      <Header headerText={ 'E-WALLET' } />
+      <Header 
+        headerText={ 'E-WALLET' }
+        privateMode={privateMode}
+        flipPrivateMode={flipPrivateMode}
+      />
       <h3>ACTIVE CARD</h3>
       { activeCard.cardNumber ?
         <Card 
@@ -63,6 +73,7 @@ function App() {
           vendor={activeCard.vendor}
           deleteHandle={ deleteHandle }
           active={true}
+          privateMode={privateMode}
         />
       : <article className='phantom-card'>
           <h3>{ savedCards.length < 1 ? <Link to='/addcard'>Add your first card!</Link> 
@@ -86,6 +97,8 @@ function App() {
                   key={i}
                   clickHandler={handleSetActiveCard}
                   active={false}
+                  privateMode={privateMode}
+
                 />)
             }
             

@@ -107,6 +107,8 @@ function AddCardView() {
                 cardHolder={ cardHolder }
                 validThru={ validThru }
                 vendor={ vendor }
+                // privateMode={privateMode}
+
             />
             <form onSubmit={ submitHandler }>
                 <label>

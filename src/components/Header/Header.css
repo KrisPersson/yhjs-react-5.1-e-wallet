@@ -37,3 +37,20 @@ header .back-btn:active {
 header .back-btn:hover {
     opacity: 0.7;
 }
+
+.private-mode-logo {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    opacity: 0.6;
+}
+
+.private-mode-logo:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.private-mode-logo:active {
+    opacity: 1;
+
+}

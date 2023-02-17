@@ -49,7 +49,7 @@ const vendors = {
 
 
 
-function Card({cardNumber, cardHolder, validThru, vendor, clickHandler, deleteHandle, active}) {
+function Card({cardNumber, cardHolder, validThru, vendor, clickHandler, deleteHandle, active, privateMode}) {
     let group = [
         'XXXX',
         'XXXX',
@@ -74,9 +74,9 @@ function Card({cardNumber, cardHolder, validThru, vendor, clickHandler, deleteHa
                 <img className='card__chip' src={ vendors[vendor].chip } alt="chip" />
                 <img className='card__vendor' src={ vendors[vendor].logo } alt="vendor" />
                 <section className='full-card-number'>
-                    <p className='card-nr card-nr--1'>{ group[0] }</p>
-                    <p className='card-nr card-nr--2'>{ group[1] }</p>
-                    <p className='card-nr card-nr--3'>{ group[2] }</p>
+                    <p className='card-nr card-nr--1'>{ privateMode ? '****' : group[0] }</p>
+                    <p className='card-nr card-nr--2'>{ privateMode ? '****' : group[1] }</p>
+                    <p className='card-nr card-nr--3'>{ privateMode ? '****' : group[2] }</p>
                     <p className='card-nr card-nr--4'>{ group[3] }</p>
                 </section>
                 <h4 className='card__cardholder-name' style={{color: vendors[vendor].secondaryTextColor}}>CARDHOLDER NAME</h4>
