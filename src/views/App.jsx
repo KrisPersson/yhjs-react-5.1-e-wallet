@@ -10,13 +10,23 @@ function App() {
 
 
   const [privateMode, setPrivateMode] = useState(true)
-  const [savedCards, setSavedCards] = useState([])
+  const [savedCards, setSavedCards] = useState([{
+    cardHolder: 'Jane Doe',
+    validThru: '1129',
+    cardNumber: '9876543210987654',
+    vendor: 'ninja'
+  }, {
+    cardHolder: 'Jane Doe',
+    validThru: '0532',
+    cardNumber: '1234567891234567',
+    vendor: 'bitcoin'
+  }])
   const [activeCard, setActiveCard] = useState(
     {
-      cardHolder: '',
-      validThru: '',
-      cardNumber: '',
-      vendor: ''
+      cardHolder: 'Jane Doe',
+      validThru: '0532',
+      cardNumber: '1234567891234567',
+      vendor: 'bitcoin'
     }
   )
 
